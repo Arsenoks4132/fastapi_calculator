@@ -1,15 +1,27 @@
-from typing import Union
-
-from fastapi import FastAPI
+from fastapi import FastAPI, Body
+from requests import get, post
+from typing import Annotated
 
 app = FastAPI()
 
 
-@app.post("/")
+def from_api(path, data=None):
+    result = get(f'http://calculator/{path}', data=data, headers={'Content-Type': 'text/plain'}).json()
+    if result is None:
+        return {"error": "API is not available"}
+    return result
+
+
+@app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return from_api('')
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+@app.get("/ping/")
+def read_root():
+    return from_api('ping')
+
+
+@app.get("/solve/")
+def read_item(expression: Annotated[str, Body()]):
+    return from_api('solve', expression)

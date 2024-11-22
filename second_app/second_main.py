@@ -1,5 +1,4 @@
 from typing import Annotated
-
 from fastapi import FastAPI, Body
 
 ALLOWED = set('0123456789+-/%*()^<>|~& ')
@@ -9,7 +8,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Hello": "from second app"}
 
 
 @app.get("/ping/")
@@ -17,7 +16,7 @@ def read_root():
     return {"PING": "PONG"}
 
 
-@app.post("/solve/")
+@app.get("/solve/")
 def read_item(expression: Annotated[str, Body()]):
     if not expression:
         return {}
