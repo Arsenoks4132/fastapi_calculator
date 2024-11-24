@@ -10,3 +10,7 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 8001
+
+
+# При использовании драйвера docker для minikube необходимо для проброса портов воспользоавться следующей командой:
+# minikube service external-calculator-receiver --url
