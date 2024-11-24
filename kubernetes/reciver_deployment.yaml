@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: calculator-receiver
-        image: arsenoks4132d/fastapi_calculator_receiver:1
+        image: arsenoks4132d/fastapi_calculator_receiver:2
         resources:
           limits:
             memory: "128Mi"
