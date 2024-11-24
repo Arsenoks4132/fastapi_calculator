@@ -8,4 +8,4 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY first_main.py /code/first_main.py
 
-CMD ["uvicorn", "first_main:app", "--port", "8001"]
+CMD ["fastapi", "run", "first_main.py", "--port", "8001", "--host", "localhost"]
