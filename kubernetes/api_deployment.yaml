@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: calculator-api
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: calculator-api

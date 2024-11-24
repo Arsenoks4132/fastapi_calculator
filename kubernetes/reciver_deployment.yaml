@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: calculator-receiver
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: calculator-receiver
