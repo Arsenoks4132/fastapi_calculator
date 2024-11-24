@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculator-receiver
+spec:
+  selector:
+    matchLabels:
+      app: calculator-receiver
+  template:
+    metadata:
+      labels:
+        app: calculator-receiver
+    spec:
+      containers:
+      - name: calculator-receiver
+        image: arsenoks4132d/fastapi_calculator_receiver:1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8001
