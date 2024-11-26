@@ -5,7 +5,7 @@ services:
       context: ./first_app
     volumes:
       - ./first_app:/code
-    command: "fastapi run first_main.py --port 8001 --host localhost"
+    command: "fastapi run first_main.py --port 8001"
     links:
       - second_app:calculator
     ports:
